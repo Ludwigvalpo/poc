@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
 
   # POST /photos or /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new(photo_params.merge(user: current_user))
 
     respond_to do |format|
       if @photo.save
@@ -48,10 +48,7 @@ class PhotosController < ApplicationController
   end
 
   # DELETE /photos/1 or /photos/1.json
-  def destroy
-    @photo.destroy
-
-    respond_to do |format|
+  def destroy:user_id
       format.html { redirect_to photos_url, notice: "Photo was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -65,6 +62,6 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:url, :comment, :active, :user_id)
+      params.require(:photo).permit(:url, :comment, :active )
     end
 end

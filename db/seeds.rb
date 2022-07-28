@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Photo.destroy_all
+
+user = User.first
+
+8.times do |i|
+    photo = Photo.create(user: user, url: "/images/0#{i + 1}.jpg")
+
+    puts "Se ha creado la photo: #{photo.url}"
+end
+

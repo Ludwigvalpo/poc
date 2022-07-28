@@ -1,10 +1,23 @@
-<h1>Hola loco</h1>
-<h1>Homes#index</h1>
+
+<% if user_signed_in? %>
+<h1>Bienvenido <%= current_user.first_name %></h1>
+<% end %>
+
 <table>
     <tbody>
     <% if @photos %>
     <td>Fotos:</td>
-    <td><%= @photos %></td>
+    <td><%= @photos.size %></td>
     <% end %>
     </tbody>
 </table>
+
+<% if @photos %>
+
+<div class="container photos">
+    <% @photos.each do |photo| %>
+    <%= render 'photos/photo', photo: photo %>
+    <% end %>
+</div>
+
+<% end %>
