@@ -7,8 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Photo.destroy_all
+User.destroy_all
 
-user = User.first
+user = User.new(
+    first_name: 'Juan', 
+    last_name: 'Pérez', 
+    email: 'nada@nada.com',
+    rut: '12345678',
+    password: '123123')
 
 8.times do |i|
     photo = Photo.create(user: user, url: "/images/0#{i + 1}.jpg")

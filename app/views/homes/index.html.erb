@@ -14,7 +14,7 @@
 
 <% if @photos %>
 
-<div class="container photos">
+<div class="container photos row">
     <% @photos.each do |photo| %>
     <%= render 'photos/photo', photo: photo %>
     <% end %>
